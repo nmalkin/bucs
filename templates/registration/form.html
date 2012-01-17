@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}Registration Form{% endblock %}
+
+{% block content %}
+<h1>Register for BUCS</h1>
+<p>
+	Are you ready to experience the thrills and excitement offered by the
+	Brown University Crisis Simulation?<br /> We've made the registration
+	process painless and straightforward, so that you're just a few short
+	steps away from becoming a registered BUCS delegate.
+</p>
+<p>
+	Before registering, you may wish to consult the <a
+		href="/registration">registration timeline and
+		conference fees</a>. <br /> Note that <b>registration is on a
+		first-come-first-served basis</b> and <b>early registrants receive a
+		20% discount</b>, so <b>register soon!</b>
+</p>
+<p>Ready? Just fill out the form below with the following information:</p>
+
+<form action="/registration/submit" method="post">
+{% csrf_token %}
+{% for field in form %}{{ field.errors }}{% endfor %}
+<p>
+	School name<br /> <input type="text" name="{{ form.school.html_name }}" required />
+</p>
+<p>
+	Contact name (head delegate or other club official responsible for
+	registration)<br /> <input type="text" name="{{ form.contact_person.html_name }}" required />
+</p>
+<p>
+	Contact e-mail address<br /> <input type="email" name="{{ form.email.html_name }}" required />
+</p>
+<p>
+	Contact phone number<br /> <input type="tel" name="{{ form.phone.html_name }}" required />
+</p>
+<p>
+	Number of delegates<br /> <input type="number" name="{{ form.delegates.html_name }}" min="1"
+		max="15" required /> (limit 15)
+</p>
+<input type="submit" value="Submit your registration for BUCS" />
+</form>
+{% endblock %}

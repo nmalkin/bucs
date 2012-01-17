@@ -1,0 +1,32 @@
+{% extends "no-nav.html" %}
+
+{% block title %}Submitted Registration{% endblock %}
+
+{% block content %}
+<h2><a href="/school/{{ school.short_name }}">{{ school }}</a> &gt; Registration Information</h2>
+<p>Below is the registration information we have on file for your school.
+If any part of it is no longer accurate, or you'd like to make changes,
+please contact <a href="mailto:info@browncrisis.org">info@browncrisis.org</a>.</p>
+<table>
+    <tr>
+        <td>School</td>
+        <td>{{ registration.school }}</td>
+    </tr>
+    <tr>
+        <td>Contact person</td>
+        <td>{{ registration.contact_person }} </td>
+    </tr>
+    <tr>
+        <td>Email</td>
+        <td>{{ registration.email }}</td>
+    </tr>
+    <tr>
+        <td>Phone</td>
+        <td>{{ registration.phone }}</td>
+    </tr>
+    <tr>
+        <td>Number of delegates</td>
+        <td>{{ registration.delegates }}</td>
+    </tr>
+</table>
+{% endblock %}

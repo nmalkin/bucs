@@ -1,0 +1,17 @@
+{% extends "no-nav.html" %}
+
+{% block title %}Login as {{ school }}{% endblock %}
+
+{% block content %}
+<form action="" method="post">
+{% csrf_token %}
+{% for field in form %}{{ field.errors }}{% endfor %}
+{% if login_failed %}
+    <p>Wrong password! Please try again.</p>
+    <input type="hidden" name="school" value="{{ short_name }}" />
+{% else %}
+    <p>Please enter your password to log in as {{ school }}.</p>
+{% endif %}
+    <p><input type="password" name="{{ form.password.html_name }}" placeholder="Password" /></p>
+    <p><input type="submit" name="submit" value="Log in" /></p>
+{% endblock %}

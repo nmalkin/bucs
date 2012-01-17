@@ -1,0 +1,14 @@
+{% extends "no-nav.html" %}
+
+{% block title %}{{ school }} at BUCS{% endblock %}
+
+{% block content %}
+<h2>Welcome, {{ school }}!</h2>
+<p>This page will help you prepare for the Brown University Crisis Simulation.</p>
+<ul>
+    <li><a href="/school/{{ school_code }}/registration">Registration information</a></li>
+    <li><a href="/school/{{ school_code }}/payments">Dues and payments</a></li>
+    <li><a href="/school/{{ school_code }}/rankings/crisis">Edit/submit crisis preferences</a></li>
+</ul>
+<p><a href="/logout">Log out</a> when you are finished.</p>
+{% endblock %}

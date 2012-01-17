@@ -1,0 +1,68 @@
+{% extends "no-nav.html" %}
+
+{% block title %}Crisis Preferences{% endblock %}
+
+{% block content %}
+<h2><a href="/school/{{ school.short_name }}">{{ school }}</a> &gt; Crisis Preferences</h2>
+{% if saved %}
+<p id="updatebox" style="font-size: 125%">Thank you! Your preferences have been saved. You can now <a href="/school/{{ school.short_name }}">return to the main page</a>.</p>
+{% else %}
+<p>We will do our best to take your school's preferences into account when assigning crises.</p>
+{% endif %}
+<p style="font-weight: bold">Drag and drop the boxes below <!--, or enter rankings,--> to order the crises from most desired (1) to least desired ({{ committees|length }}).<br />
+When you are done, click <i>Save</i>.</p>
+
+
+<style>
+	#sortable { list-style-type: none; margin: 0; padding: 0; width: 60%; }
+	#sortable li { margin: 0 3px 3px 3px; padding: 0.4em; padding-left: 1.5em; font-size: 1.4em; height: 18px; }
+	#sortable li span { position: absolute; margin-left: -1.3em; }
+    input.order_field { width: 35px; text-align: center; }
+</style>
+
+
+<form method="POST" action="">
+    {% csrf_token %}
+
+    <ul id="sortable">
+    {% for committee in committees %}
+        <li id="{{ committee.short_name }}">
+            <input type="text" min="1" max="{{ committees|length }}" value="{{ forloop.counter }}" id="order_{{ committee.short_name }}" name="order_{{ committee.short_name }}" class="order_field" />
+            {{ committee.name }}
+        </li>
+    {% endfor %}
+    </ul>
+
+
+    <p><input type="submit" value="Save" /></p>
+</form>
+
+
+<script type="text/javascript" src="{{ STATIC_URL }}scripts/jquery.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}scripts/jquery-ui.js"></script>
+<script type="text/javascript">
+	$(function() {
+        $( "#sortable" ).sortable({
+            update: function(event, ui) {
+                var idsInOrder = $('#sortable').sortable('toArray');                
+                for(var i = 0; i < idsInOrder.length; i++) {
+                    var id = idsInOrder[i];
+                    $('#order_' + id).val(i + 1);
+                }
+            }
+        });
+		$( "#sortable" ).disableSelection();
+
+        /* TODO: update positions in the event of manual changes to order fields.
+        $('.order_field').change(function(event) {
+            var target = $(this);
+            var targetID = target.attr('id');
+            var idsInOrder = $('#sortable').sortable('toArray');
+        });
+        */
+        // until then:
+        $('.order_field').attr('readonly', true);
+	});
+</script>
+
+{% endblock %}

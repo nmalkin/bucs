@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>{% block title %}{% endblock %} | Brown University Crisis Simulation</title>
+<meta name="description" value=">{% block description %}{% endblock %}" />
+<link rel="stylesheet" href="{{ STATIC_URL }}styles/bucs.css" type="text/css" media="screen" />
+</head>
+
+<body>
+	<div id="header">
+		<h1>
+			<a href="/"><img id="logo" src="{{ STATIC_URL }}images/logo.png"
+				alt="Brown University Crisis Simulation (BUCS)" /></a>
+		</h1>
+		<p id="tagline">&nbsp;</p>
+		<ul>
+			<li><a href='/' title="Welcome, Conference at a Glance, Update">Home</a>
+			</li>
+			<li>
+				<a href='/committees' title="Conference Committees">Committees &amp; Resources</a>
+			</li>
+			<li>
+				<a href='/registration' title="Register Online, Registration Timeline, Fees">Registration</a>
+			</li>
+			<li>
+				<a href='/logistics' title="Schedule">Conference Logistics</a>
+			</li>
+			<li>
+				<a href='/about' title="Secretariat, Get Involved">About Us</a>
+			</li>
+		</ul>
+	</div>
+	<div id="content">
+		<div id="main">{% block content %}{% endblock %}</div>
+	</div>
+	<div id="footer">
+		<p>
+			Brown University Model United Nations | Box 1930 | Providence, RI
+			02912<br /> <a
+				href="http://mailhide.recaptcha.net/d?k=01A26o5T9EXBk7FSv5AbbqAA==&c=49VqJSWhfanM4_VZvpsVC2DBxZdZidhj6od73pZh9Ec="
+				onclick="window.open('http://mailhide.recaptcha.net/d?k=01A26o5T9EXBk7FSv5AbbqAA==&c=49VqJSWhfanM4_VZvpsVC2DBxZdZidhj6od73pZh9Ec=', '', 'toolbar=0,scrollbars=0,location=0,statusbar=0,menubar=0,resizable=0,width=500,height=300'); return false;"
+				title="Click to show the contact e-mail address">Contact us</a>
+		</p>
+		<p>
+			Based on a design by <a href="http://www.edg3.co.uk/">edg3.co.uk</a>
+		</p>
+	</div>
+
+	<!--
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-242605-7");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+-->
+
+</body>
+</html>
