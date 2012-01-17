@@ -1,0 +1,5 @@
+*.pyc
+*/*.pyc
+
+bucs.db
+private_settings.py
