@@ -298,7 +298,7 @@ table {
     border-spacing: 0;
 	border: 1px solid #128ab8;
 }
-td {
+td, th {
     padding: 5px;
 	border: 1px solid #128ab8;
 }
