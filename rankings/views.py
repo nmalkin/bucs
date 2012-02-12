@@ -20,7 +20,6 @@ def crisis_rankings(request, school):
         # get all the order_* fields
         rankings = []
         for field, value in request.POST.iteritems():
-            print field, value
             if field.startswith('order_'):
                 crisis_short_name = field[len('order_'):]
                 crisis = Crisis.objects.get(short_name=crisis_short_name)
