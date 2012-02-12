@@ -23,6 +23,7 @@ INSTALLED_APPS = (
     'conference',
     'payments',
     'rankings',
+    'assignments',
 )
 
 # AUTH_PROFILE_MODULE = 'accounts.UserProfile'
